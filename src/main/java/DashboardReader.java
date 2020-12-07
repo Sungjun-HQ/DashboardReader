@@ -9,26 +9,19 @@ public class DashboardReader {
     // If you don't specify the GitHub user id then the sdk will retrieve it via /user endpoint
     // GitHub github = new GitHubBuilder()lder().withOAuthToken("my_personal_token").build();
 
-    // If the token has access to an organization, you can specify it here.
-    GitHub github;
-
-    DashboardReader(){
+    public GitHub connectGH() {
+        GitHub github = null;
         try {
-            github = new GitHubBuilder().withOAuthToken().build();
+            // If the token has access to an organization, you can specify it here.
+            github = new GitHubBuilder().withOAuthToken("oauthToken", "sungjun-HQ").build();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return github;
     }
 
     public static void main(String[] args) {
-        DashboardReader dbReader = new DashboardReader();
-        try {
-            GHRepository ghRepository = dbReader.github.getRepository("Sungjun-HQ/DashboardReader/issues/1");
-//            System.out.println("Test: " + ghRepository.getSize());
-//            GHIssue ghIssue = ghRepository.getIssue(issueNum);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
 }
